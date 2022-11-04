@@ -341,6 +341,20 @@ input {
   text-align: center;
 }
 
+#error-modal-main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+}
+
+#error-modal-button {
+    color: black;
+    min-width: 0;
+    padding-right: 10px;
+}
+
 /* ANIMATIONS
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 [data-animation] .modal-dialog {
