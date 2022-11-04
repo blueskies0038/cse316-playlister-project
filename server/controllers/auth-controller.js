@@ -86,12 +86,10 @@ loginUser = async (req, res) => {
 }
 
 logoutUser = async (req, res) => {
-    res.cookie("token", "", {
-        httpOnly: true,
-        expires: new Date(0),
-        secure: true,
-        sameSite: "none"
-    }).send();
+    res.clearCookie("token");
+    return res.status(200).json({
+        message: 'logged out successfully'
+    });
 }
 
 registerUser = async (req, res) => {

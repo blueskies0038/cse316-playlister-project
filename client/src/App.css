@@ -74,6 +74,10 @@ body {
   float: right;
 }
 
+#log-in-button {
+  width: 100%;
+}
+
 .top5-button,
 .top5-button-disabled {
   font-size: 36pt;
