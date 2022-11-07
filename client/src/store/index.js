@@ -234,7 +234,7 @@ function GlobalStoreContextProvider(props) {
                                     type: GlobalStoreActionType.CHANGE_LIST_NAME,
                                     payload: {
                                         idNamePairs: pairsArray,
-                                        playlist: playlist
+                                        playlist: null
                                     }
                                 });
                             }
@@ -255,6 +255,7 @@ function GlobalStoreContextProvider(props) {
             payload: {}
         });
         tps.clearAllTransactions();
+        history.push("/")
     }
 
     // THIS FUNCTION CREATES A NEW LIST
@@ -317,6 +318,7 @@ function GlobalStoreContextProvider(props) {
         async function processDelete(id) {
             let response = await api.deletePlaylistById(id);
             if (response.data.success) {
+                console.log(id)
                 store.loadIdNamePairs();
                 history.push("/");
             }
