@@ -99,7 +99,6 @@ function AuthContextProvider(props) {
                     }
                 })
                 history.push("/");
-                store.loadIdNamePairs()
             }
         } catch (error) {
             authReducer({

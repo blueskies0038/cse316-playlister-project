@@ -26,6 +26,7 @@ createPlaylist = (req, res) => {
 
     User.findOne({ _id: req.userId }, (err, user) => {
         console.log("user found: " + JSON.stringify(user));
+        playlist.ownerName = user.firstName + " " + user.lastName
         user.playlists.push(playlist._id);
         user
             .save()
@@ -212,11 +213,50 @@ updatePlaylist = async (req, res) => {
         asyncFindUser(playlist);
     })
 }
+
+getPublishedPlaylists = async (req, res) => {
+  async function asyncFindList() {
+      await Playlist.find({ isPublished: true }, (err, playlists) => {
+          console.log("found Playlists: " + JSON.stringify(playlists));
+          if (err) {
+              return res.status(400).json({ success: false, error: err })
+          }
+          if (!playlists) {
+              return res
+                  .status(404)
+                  .json({ success: false, error: 'Playlists not found' })
+          }
+          else {
+              console.log("Send the Playlist pairs");
+              let pairs = [];
+              for (let key in playlists) {
+                  let list = playlists[key];
+                  let pair = {
+                      _id: list._id,
+                      name: list.name,
+                      songs: list.songs,
+                      likes: list.likes,
+                      dislikes: list.dislikes,
+                      listens: list.listens,
+                      ownerName: list.ownerName,
+                  };
+                  pairs.push(pair);
+              }
+              console.log(pairs)
+              return res.status(200).json({ success: true, idNamePairs: pairs })
+          }
+      }).catch(err => console.log(err))
+  }
+  asyncFindList()
+}
+
+
 module.exports = {
     createPlaylist,
     deletePlaylist,
     getPlaylistById,
     getPlaylistPairs,
     getPlaylists,
-    updatePlaylist
+    updatePlaylist,
+    getPublishedPlaylists,
 }
