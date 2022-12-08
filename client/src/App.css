@@ -187,9 +187,9 @@ body {
 .selected-list-card,
 .unselected-list-card {
   font-size: 18pt;
-  margin: 10px;
+  margin: 5px 1px;
   padding: 20px;
-  border-radius: 25px;
+  border-radius: 15px;
 }
 
 .list-card:aria-disabled,
@@ -438,6 +438,40 @@ input {
     color: black;
     min-width: 0;
     padding-right: 10px;
+}
+
+.tab-button {
+    background-color: #e0e0e0;
+    padding: 8px 20px;
+    border: 2px solid black;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    cursor: pointer;
+}
+
+.tab-button-active {
+    background-color: white;
+    padding: 8px 20px;
+    border: 2px solid black;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    cursor: pointer;
+}
+
+#playlist-listens {
+    color: red;
+}
+
+.playlist-likes {
+    font-size: 12pt;
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+.player-span {
+    font-size: 14px;
+    padding: 0px 10px;
+    margin: 5px;
 }
 
 /* ANIMATIONS

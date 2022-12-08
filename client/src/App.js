@@ -13,6 +13,8 @@ import {
     ErrorModal,
 } from './components'
 import AllListsScreen from './components/AllListsScreen';
+import Navbar from './components/Navbar';
+import UserListsScreen from './components/UserListsScreen';
 /*
     This is our application's top-level component.
     
@@ -30,12 +32,13 @@ const App = () => {
             <AuthContextProvider>
                 <GlobalStoreContextProvider>              
                     <AppBanner />
+                    <Navbar />
                     <Switch>
                         <Route path="/" exact component={HomeWrapper} />
                         <Route path="/login" exact component={LoginScreen} />
                         <Route path="/register" exact component={RegisterScreen} />
                         <Route path="/all" exact component={AllListsScreen} />
-                        <Route path="/playlist/:id" exact component={WorkspaceScreen} />
+                        <Route path="/users" exact component={UserListsScreen} />
                     </Switch>
                     <Statusbar />
                     <ErrorModal />
